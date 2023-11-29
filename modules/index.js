@@ -97,6 +97,7 @@ function memory2display() {
         for( let x=0; x<width/8; x++ ) {
             let value = parseInt(memory[addr].value, 16);
             let bit_value=128;
+            /*ここだと思う*/ 
             for( let bit=0; bit<8; bit++ ) {
                 let dot = document.querySelector('#dot_'+y+'_'+(x*8+bit));
                 //console.log({addr, value, bit, x, y});
