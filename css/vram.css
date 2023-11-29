@@ -1,0 +1,47 @@
+#memory {
+    
+}
+
+.address {
+    font-family: D7CBI;
+    font-size: small;
+    color: rgb(136, 134, 134);
+}
+
+.mem_value {
+    
+    font-family: D7CBI;
+    width: 30px;
+}
+
+#display1 {
+    display: flex;
+    justify-content: center;
+}
+
+.flex{
+    display: flex;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #a0a0a0;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.line {
+    margin: 0;
+    padding: 0;
+    height: 8px;
+}
+
+.white {
+    background-color: #ffffff;
+}
+
+.black {
+    background-color: #000000;
+}
