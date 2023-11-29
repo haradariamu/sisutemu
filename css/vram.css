@@ -4,19 +4,21 @@
 
 .address {
     font-family: D7CBI;
-    font-size: small;
+    font-size: small;/*アドレス*/
     color: rgb(136, 134, 134);
 }
 
 .mem_value {
     
     font-family: D7CBI;
-    width: 30px;
+    width: 30px;/*テキストボックスの横幅*/
 }
-
 #display1 {
     display: flex;
     justify-content: center;
+}
+#memory_view1{
+    
 }
 
 .flex{
@@ -24,18 +26,18 @@
 }
 
 .dot {
-    width: 8px;
-    height: 8px;
+    width: 20px;
+    height: 20px;
     background-color: #a0a0a0;
     display: inline-block;
-    margin: 0;
+    margin: 1;
     padding: 0;
 }
-
+/*↑↓図の詳細*/
 .line {
     margin: 0;
     padding: 0;
-    height: 8px;
+    height: 20px;
 }
 
 .white {
