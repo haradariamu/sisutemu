@@ -9,6 +9,7 @@ set_memory( 0, mem, mem_length );
 init_display( width, height );
 clearDisplay();
 memory2display();
+memory3display();
 
 function padding8( number ) {
     if( number )
@@ -62,7 +63,8 @@ function set_memory( address, mem, length ) {
         memArea.addEventListener('change', () => {
             clearDisplay();
             memory2display();
-        })
+        })/*ここで表の表示の設定をしているアドレスは0,4,8だけ二進数はそれ単体の表を作り
+        １６真数は横に並べる */
     }
 }
 
@@ -71,7 +73,7 @@ function init_display( width, height ) {
     for( let y=0; y<height; y++ ) {
         let div = document.createElement( 'div' );
         div.classList.add("line");
-        display.appendChild(div);
+        display.appendChild(div);/*appendChildはその前のものを繰り返す */
         for( let x=0; x<width; x++ ) {
             let pixel = document.createElement( 'div' );
             pixel.classList.add("dot");
@@ -109,6 +111,7 @@ function memory2display() {
         }
     }
 }
+
 
 function display2memory() {
 

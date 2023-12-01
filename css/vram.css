@@ -18,7 +18,16 @@
     justify-content: center;
 }
 #memory_view1{
-    
+    width: 800px;
+    display: grid;
+    grid-template-columns: 180px 180px 180px 180px;
+    grid-auto-rows: 30px;
+    /*二進数の部分or左全般っぽい*/
+}
+
+#test{
+    display: flex;
+    flex-direction: column;
 }
 
 .flex{
@@ -26,8 +35,8 @@
 }
 
 .dot {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background-color: #a0a0a0;
     display: inline-block;
     margin: 1;
@@ -37,7 +46,7 @@
 .line {
     margin: 0;
     padding: 0;
-    height: 20px;
+    height: 30px;
 }
 
 .white {
@@ -46,4 +55,8 @@
 
 .black {
     background-color: #000000;
+}
+
+caption{
+    caption-side: top;
 }
