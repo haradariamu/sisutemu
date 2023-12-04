@@ -42,10 +42,13 @@ function set_memory( address, mem, length ) {
     let memory = document.querySelector('#memory_view1');
 
     for( let i=0; i<length; i++ ) {
+        /*if文でi%4=0みたいに */
+        
         let tr = document.createElement('tr');
         let td1 = document.createElement('td');
         td1.classList.add('address');
         td1.innerText = padding16( address+i );
+        
         let td2 = document.createElement('td');
         let memArea = document.createElement('input');
         memArea.classList.add('mem_value');
@@ -55,7 +58,7 @@ function set_memory( address, mem, length ) {
         let td3 = document.createElement('td');
         td3.classList.add('mem_binary');
         td3.innerText = padding_bin8(mem[i]);
-
+        
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
