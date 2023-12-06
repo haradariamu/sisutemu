@@ -55,9 +55,13 @@ function set_memory( address, mem, length ) {
         memArea.setAttribute( 'type', 'text' );
         memArea.setAttribute( 'value',  padding8(mem[i]) );
         td2.appendChild(memArea);
+        
         let td3 = document.createElement('td');
-        td3.classList.add('mem_binary');
-        td3.innerText = padding_bin8(mem[i]);
+        memArea = document.createElement('input');
+        memArea.classList.add('mem_binary');
+        memArea.setAttribute( 'type', 'text' );
+        memArea.setAttribute( 'value', padding_bin8(mem[i]) );
+        td3.appendChild(memArea);
         
         tr.appendChild(td1);
         tr.appendChild(td2);
@@ -114,6 +118,7 @@ function memory2display() {
         }
     }
 }
+
 
 
 function display2memory() {

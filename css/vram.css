@@ -13,6 +13,11 @@
     font-family: D7CBI;
     width: 30px;/*テキストボックスの横幅*/
 }
+.mem_binary {
+    
+    font-family: D7CBI;
+    width: 80px;/*テキストボックスの横幅*/
+}
 #display1 {
     display: flex;
     justify-content: center;
