@@ -63,17 +63,21 @@ function set_memory( address, mem, length ) {
         memArea.setAttribute( 'value', padding_bin8(mem[i]) );
         td3.appendChild(memArea);
         
+        if(i % 4 ==0){
         tr.appendChild(td1);
+        }
         tr.appendChild(td2);
         tr.appendChild(td3);
         memory.appendChild(tr);
         memArea.addEventListener('change', () => {
             clearDisplay();
             memory2display();
+            
         })/*ここで表の表示の設定をしているアドレスは0,4,8だけ二進数はそれ単体の表を作り
         １６真数は横に並べる */
     }
 }
+
 
 function init_display( width, height ) {
     let display = document.querySelector( '#display' );
@@ -98,7 +102,6 @@ function clearDisplay() {
         }
     }
 }
-
 function memory2display() {
     let addr = 0;
     let memory = document.querySelectorAll('.mem_value');
@@ -113,6 +116,26 @@ function memory2display() {
                 let attr = ((value&bit_value)?'white':'black');
                 dot.classList.add( attr );
                 bit_value/=2;
+            }
+            addr++;
+        }
+    }
+}
+
+function memory3display() {
+    let addr = 0;
+    let memory = document2.querySelectorAll('.mem_binary');
+    for( let y=0; y<height; y++ ) {
+        for( let x=0; x<width/8; x++ ) {
+            let binary = parseInt(memory[addr].binary, 2);
+            let bit_binary=128;
+            /*ここだと思う*/ 
+            for( let bit=0; bit<8; bit++ ) {
+                let dot = document2.querySelector('#dot_'+y+'_'+(x*8+bit));
+                //console.log({addr, value, bit, x, y});
+                let attr = ((binary&bit_binary)?'white':'black');
+                dot.classList.add( attr );
+                bit_binary/=2;
             }
             addr++;
         }
