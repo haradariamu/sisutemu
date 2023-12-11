@@ -7,13 +7,24 @@
     <script src="./modules/index.js" defer></script>
     <link rel="stylesheet" href="./css/vram.css">
 </head>
+<style>
+    caption {
+        text-align: left;
+    }
+    </style>
 <body>
     <a href="/toppage.html">トップページ</a><br>
     <div class="flex">
     <div id="program"></div>
     <div id="vram">
         <table id="memory">
-            <caption>vram部</caption>
+            <h4>vram部</h4>
+            <div class="flex2">
+                <p>+0</p>
+                <p>+1</p>
+                <p>+2</p>
+                <p>+3</p>
+            </div>
             <!-- <thead>
                 <tr>
                     <th colspan="2">Memory</th>
@@ -24,7 +35,13 @@
     </div>
     <div id="test">
         <table>
-            <caption>出力部 </caption>
+            <h4>出力部</h4>
+            <div class="flex3">
+                <p>+0</p>
+                <p>+1</p>
+                <p>+2</p>
+                <p>+3</p>
+            </div>
         </table>
         <div id="display"></div>
     </div>

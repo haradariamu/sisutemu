@@ -45,7 +45,16 @@
 .flex{
     display: flex;
 }
-
+.flex2{
+    display: flex;
+    margin: 0 0 0 100px;
+    gap: 6px 115px;
+}
+.flex3{
+    display: flex;
+    margin: 0 0 0 120px;
+    gap: 6px 200px;
+}
 .dot {
     width: 30px;
     height: 30px;
@@ -71,4 +80,5 @@
 
 caption{
     caption-side: top;
+    margin: 10;
 }
