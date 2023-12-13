@@ -23,9 +23,9 @@
     justify-content: center;
 }
 #memory_view1{
-    width: 800px;
+    width: 400px;
     display: grid;
-    grid-template-columns: 170px 135px ;
+    grid-template-columns: 170px 100px ;
     grid-auto-rows: 30px;
     /*二進数の部分or左全般っぽい*/
 }

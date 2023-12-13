@@ -9,7 +9,7 @@ set_memory( 0, mem, mem_length );
 init_display( width, height );
 clearDisplay();
 memory2display();
-//memory3display();
+memory3display();
 
 function padding8( number ) {
     if( number )
@@ -40,10 +40,8 @@ function padding_bin8( number ) {
  */
 function set_memory( address, mem, length ) {
     let memory = document.querySelector('#memory_view1');
-    let addr = 0;
 
     for( let i=0; i<length; i++ ) {
-        /*if文でi%4=0みたいに */
         
         let tr = document.createElement('tr');
         let td1 = document.createElement('td');
@@ -60,14 +58,14 @@ function set_memory( address, mem, length ) {
             memory2display();
             let memoryS = document.querySelectorAll('.mem_value');
             console.log(memoryS);
-            let value = parseInt(memoryS[addr].value, 16);
-            console.log(value);
-            const padBinary = String(value.toString(2)).padStart(8, '0');
+            let value = parseInt(memoryS[i].value, 16);
+            console.log(memoryS[i]);
+            let padBinary = String(value.toString(2)).padStart(8, '0');
             console.log(padBinary);
-            //((td3)) =padBinary;
+            memArea.setAttribute( 'value', padBinary );
+            console.log(memArea.classList.mem_binary);
             /*ここに2進数の変更の処理を書き込む */
         })
-        addr++;
         td2.appendChild(memArea);
         
         let td3 = document.createElement('td');
@@ -75,6 +73,19 @@ function set_memory( address, mem, length ) {
         memArea.classList.add('mem_binary');
         memArea.setAttribute( 'type', 'text' );
         memArea.setAttribute( 'value', padding_bin8(mem[i]) );
+        memArea.addEventListener('change', () => {
+            clearDisplay();
+            let memoryS = document.querySelectorAll('.mem_binary');
+            console.log(memoryS);
+            let value = parseInt(memoryS[i].value, 2);
+            console.log(memoryS[i]);
+            let padBinary = String(value.toString(16)).padStart(2, '0');
+            console.log(padBinary);
+            memArea.setAttribute( 'value', padBinary );
+            console.log(memArea.classList.mem_value);
+            memory2display();
+            /*ここに2進数の変更の処理を書き込む */
+        })
         td3.appendChild(memArea);
         
         if(i % 2 ==0){
@@ -86,6 +97,7 @@ function set_memory( address, mem, length ) {
         memArea.addEventListener('change', () => {
             clearDisplay();
             memory2display();
+            //memory3display();
         })/*ここで表の表示の設定をしているアドレスは0,4,8だけ二進数はそれ単体の表を作り
         １６真数は横に並べる */
     }
@@ -141,8 +153,30 @@ function memory2display() {
         }
     }
 }
+function memory3display() {
+    let addr = 0;
+    let memory = document.querySelectorAll('.mem_binary');
+    for( let y=0; y<height; y++ ) {
+        for( let x=0; x<width/8; x++ ) {
+            let value = parseInt(memory[addr].value, 2);
+            console.log(value);
+            let bit_value=128;
+            /*ここだと思う*/ 
+            for( let bit=0; bit<8; bit++ ) {
+                let dot = document.querySelector('#dot_'+y+'_'+(x*8+bit));
+                //console.log({addr, value, bit, x, y});
+                let attr = ((value&bit_value)?'white':'black');
+                dot.classList.add( attr );
+                bit_value/=2;
+            }
+            addr++;
+        }
+    }
+}
 
-
+/*let binary = parseInt(memoryB[i].binary, 2);
+            console.log(memoryB[i]);
+            // =memoryB;*/ 
 
 
 
