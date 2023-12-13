@@ -1,6 +1,6 @@
 
-let width = 32;
-let height = 32;
+let width = 16;
+let height = 16;
 let mem_length = width / 8 * height;
 let mem = new Uint8Array( mem_length );
 for( let i=0; i<mem_length; i++ )   mem[i] = i;
@@ -9,7 +9,7 @@ set_memory( 0, mem, mem_length );
 init_display( width, height );
 clearDisplay();
 memory2display();
-memory3display();
+//memory3display();
 
 function padding8( number ) {
     if( number )
@@ -40,6 +40,7 @@ function padding_bin8( number ) {
  */
 function set_memory( address, mem, length ) {
     let memory = document.querySelector('#memory_view1');
+    let addr = 0;
 
     for( let i=0; i<length; i++ ) {
         /*if文でi%4=0みたいに */
@@ -54,6 +55,19 @@ function set_memory( address, mem, length ) {
         memArea.classList.add('mem_value');
         memArea.setAttribute( 'type', 'text' );
         memArea.setAttribute( 'value',  padding8(mem[i]) );
+        memArea.addEventListener('change', () => {
+            clearDisplay();
+            memory2display();
+            let memoryS = document.querySelectorAll('.mem_value');
+            console.log(memoryS);
+            let value = parseInt(memoryS[addr].value, 16);
+            console.log(value);
+            const padBinary = String(value.toString(2)).padStart(8, '0');
+            console.log(padBinary);
+            //((td3)) =padBinary;
+            /*ここに2進数の変更の処理を書き込む */
+        })
+        addr++;
         td2.appendChild(memArea);
         
         let td3 = document.createElement('td');
@@ -63,7 +77,7 @@ function set_memory( address, mem, length ) {
         memArea.setAttribute( 'value', padding_bin8(mem[i]) );
         td3.appendChild(memArea);
         
-        if(i % 4 ==0){
+        if(i % 2 ==0){
         tr.appendChild(td1);
         }
         tr.appendChild(td2);
@@ -72,7 +86,6 @@ function set_memory( address, mem, length ) {
         memArea.addEventListener('change', () => {
             clearDisplay();
             memory2display();
-            
         })/*ここで表の表示の設定をしているアドレスは0,4,8だけ二進数はそれ単体の表を作り
         １６真数は横に並べる */
     }
@@ -108,6 +121,13 @@ function memory2display() {
     for( let y=0; y<height; y++ ) {
         for( let x=0; x<width/8; x++ ) {
             let value = parseInt(memory[addr].value, 16);
+            /*let binary = parseInt(memory[addr].value, 16);
+            const padBinary = String(binary.toString(2)).padStart(8, '0');
+            console.log(value);
+            console.log(padBinary);
+            let change = document.getElementById("memory_view1").innerHTML;
+            change=change.replace(memory[addr].binary,padBinary);*/
+            
             let bit_value=128;
             /*ここだと思う*/ 
             for( let bit=0; bit<8; bit++ ) {
@@ -122,25 +142,7 @@ function memory2display() {
     }
 }
 
-function memory3display() {
-    let addr = 0;
-    let memory = document2.querySelectorAll('.mem_binary');
-    for( let y=0; y<height; y++ ) {
-        for( let x=0; x<width/8; x++ ) {
-            let binary = parseInt(memory[addr].binary, 2);
-            let bit_binary=128;
-            /*ここだと思う*/ 
-            for( let bit=0; bit<8; bit++ ) {
-                let dot = document2.querySelector('#dot_'+y+'_'+(x*8+bit));
-                //console.log({addr, value, bit, x, y});
-                let attr = ((binary&bit_binary)?'white':'black');
-                dot.classList.add( attr );
-                bit_binary/=2;
-            }
-            addr++;
-        }
-    }
-}
+
 
 
 
