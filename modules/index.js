@@ -63,7 +63,7 @@ function set_memory( address, mem, length ) {
             let padBinary = String(value.toString(2)).padStart(8, '0');
             console.log(padBinary);
             memArea.setAttribute( 'value', padBinary );
-            console.log(memArea.classList.mem_binary);
+            console.log(memArea.classList.value);
             /*ここに2進数の変更の処理を書き込む */
         })
         td2.appendChild(memArea);
@@ -82,7 +82,7 @@ function set_memory( address, mem, length ) {
             let padBinary = String(value.toString(16)).padStart(2, '0');
             console.log(padBinary);
             memArea.setAttribute( 'value', padBinary );
-            console.log(memArea.classList.mem_value);
+            console.log(memArea.classList.value);
             memory2display();
             /*ここに2進数の変更の処理を書き込む */
         })
@@ -133,12 +133,7 @@ function memory2display() {
     for( let y=0; y<height; y++ ) {
         for( let x=0; x<width/8; x++ ) {
             let value = parseInt(memory[addr].value, 16);
-            /*let binary = parseInt(memory[addr].value, 16);
-            const padBinary = String(binary.toString(2)).padStart(8, '0');
-            console.log(value);
-            console.log(padBinary);
-            let change = document.getElementById("memory_view1").innerHTML;
-            change=change.replace(memory[addr].binary,padBinary);*/
+            
             
             let bit_value=128;
             /*ここだと思う*/ 
@@ -159,7 +154,6 @@ function memory3display() {
     for( let y=0; y<height; y++ ) {
         for( let x=0; x<width/8; x++ ) {
             let value = parseInt(memory[addr].value, 2);
-            console.log(value);
             let bit_value=128;
             /*ここだと思う*/ 
             for( let bit=0; bit<8; bit++ ) {
