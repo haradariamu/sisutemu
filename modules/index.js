@@ -56,37 +56,30 @@ function set_memory( address, mem, length ) {
         memArea.addEventListener('change', () => {
             clearDisplay();
             memory2display();
-            let memoryS = document.querySelectorAll('.mem_value');
-            console.log(memoryS);
-            let value = parseInt(memoryS[i].value, 16);
-            console.log(memoryS[i]);
+            let memoryB = document.querySelectorAll('.mem_value');
+            let value = parseInt(memoryB[i].value, 16);
             let padBinary = String(value.toString(2)).padStart(8, '0');
-            console.log(padBinary);
-            memArea.setAttribute( 'value', padBinary );
-            console.log(memArea.classList.value);
+            memAreaB.value = padBinary ;
             /*ここに2進数の変更の処理を書き込む */
         })
-        td2.appendChild(memArea);
         
         let td3 = document.createElement('td');
-        memArea = document.createElement('input');
-        memArea.classList.add('mem_binary');
-        memArea.setAttribute( 'type', 'text' );
-        memArea.setAttribute( 'value', padding_bin8(mem[i]) );
-        memArea.addEventListener('change', () => {
+        let memAreaB = document.createElement('input');
+        memAreaB.classList.add('mem_binary');
+        memAreaB.setAttribute( 'type', 'text' );
+        memAreaB.setAttribute( 'value', padding_bin8(mem[i]) );
+        memAreaB.addEventListener('change', () => {
             clearDisplay();
-            let memoryS = document.querySelectorAll('.mem_binary');
-            console.log(memoryS);
-            let value = parseInt(memoryS[i].value, 2);
-            console.log(memoryS[i]);
-            let padBinary = String(value.toString(16)).padStart(2, '0');
-            console.log(padBinary);
-            memArea.setAttribute( 'value', padBinary );
-            console.log(memArea.classList.value);
-            memory2display();
+            memory3display();
+            let memoryB = document.querySelectorAll('.mem_binary');
+            let value2 = parseInt(memoryB[i].value, 2);
+            let padBinary2 = String(value2.toString(16)).padStart(2, '0');
+            //memArea.setAttribute( 'value', padBinary2 );
+            memArea.value = padBinary2;
             /*ここに2進数の変更の処理を書き込む */
         })
-        td3.appendChild(memArea);
+        td3.appendChild(memAreaB);
+        td2.appendChild(memArea);
         
         if(i % 2 ==0){
         tr.appendChild(td1);
