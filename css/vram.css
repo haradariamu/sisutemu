@@ -55,6 +55,11 @@
     margin: 0 0 0 120px;
     gap: 6px 200px;
 }
+.flex4{
+    display: flex;
+    margin: 0 0 0 10px;
+    gap: 0px 80px;
+}
 .dot {
     width: 30px;
     height: 30px;
